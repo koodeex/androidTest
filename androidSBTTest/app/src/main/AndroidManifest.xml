@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.user.uitestsbt">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EdgeActivity" />
+        <activity
+            android:name=".SubActivity"
+            android:theme="@style/AppCompatTheme" />
+        <activity android:name=".Pin" />
+        <activity android:name=".Pin2" />
+        <activity android:name=".PreloaderFake" />
+        <activity android:name=".DoubleChoiceActivity" />
+        <activity android:name=".ParkingDriving" />
+        <activity android:name=".OneStuffActivity" />
+        <activity android:name=".ChooseYourDestiny"></activity>
+    </application>
+
+</manifest>

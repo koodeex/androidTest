@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">uiTestSBT</string>
+    <string name="loginPlaceholder">account ID</string>
+    <string name="loginButton">LOGIN</string>
+    <string name="accChoose">CLICK HERE</string>
+    <string name="arrowPlaceholder">LIKE ARROW</string>
+    <string name="oneBut">1</string>
+    <string name="twoBut">2</string>
+    <string name="threeBut">3</string>
+    <string name="fourBut">4</string>
+    <string name="fiveBut">5</string>
+    <string name="sixBut">6</string>
+    <string name="sevenBut">7</string>
+    <string name="eightBut">8</string>
+    <string name="nineBut">9</string>
+    <string name="fakeButtonPlaceholder">this button is a fake</string>
+    <string name="kvitokSearch">Поиск по квитанции</string>
+    <string name="shtrafSearch">Поиск штрафа</string>
+    <string name="nextStep">NEXT</string>
+    <string name="firstOption">FOLLOW TO FIRST</string>
+    <string name="secondOption">FOLLOW TO SECOND</string>
+    <string name="describeCheckBox">Сохранение документов позволит   использовать введенные данные в   следующий раз на этом устройстве</string>
+    <string name="checkBoxText">Сохранить новые документы</string>
+    <string name="card_temporary_placeholder">CARD TEMPORARY PLACEHOLDER</string>
+    <string name="searchText">SEARCH</string>
+</resources>
