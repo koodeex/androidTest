@@ -49,12 +49,27 @@
             android:orientation="vertical"
             android:padding="2dp">
 
-            <TextView
-                android:id="@+id/textViewBoldLarge"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/checkBoxText"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/textViewBoldLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkBoxText"
+                    android:textSize="18sp" />
+
+
+                <CheckBox
+                    android:id="@+id/checkBoxSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textViewBoldSmall"
@@ -62,19 +77,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/describeCheckBox"
                 android:textSize="12sp" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="2dp">
 
-            <CheckBox
-                android:id="@+id/checkBoxSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -88,7 +94,7 @@
         android:id="@+id/searchButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/searchText"/>
+        android:text="@string/searchText"
+        android:textStyle="bold" />
 
 </LinearLayout>
