@@ -35,7 +35,7 @@ public class Pin extends AppCompatActivity {
         mEightButton = (Button) findViewById(R.id.eightBut);
         mNineButton = (Button) findViewById(R.id.nineBut);
         mPin = (TextView) findViewById(R.id.pinText);
-
+        final Intent getID = getIntent();
 
 
         mOneButton.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +113,7 @@ public class Pin extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.length() > 4) {
                     Intent pin2 = new Intent(Pin.this, Pin2.class);
+                    pin2.putExtra("accId", getID.getStringExtra("accId"));
                     startActivity(pin2);
                 }
 

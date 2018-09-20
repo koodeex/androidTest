@@ -18,7 +18,7 @@ public class DoubleChoiceActivity extends ListActivity {
         super.onCreate(savedInstanceState);
      //   setContentView(R.layout.activity_double_choice);
 
-
+        final Intent getID = getIntent();
 
         // storing string resources into Array
         String[] service_options = getResources().getStringArray(R.array.serviceOptionsList);
@@ -33,6 +33,7 @@ public class DoubleChoiceActivity extends ListActivity {
                 switch (i) {
                     case 0:
                         Intent oneStuffActivity = new Intent(DoubleChoiceActivity.this, OneStuffActivity.class);
+                        oneStuffActivity.putExtra("accId", getID.getStringExtra("accID"));
                         startActivity(oneStuffActivity);
                         break;
                     case 1:

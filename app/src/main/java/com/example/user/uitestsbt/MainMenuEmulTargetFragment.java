@@ -22,13 +22,15 @@ public class MainMenuEmulTargetFragment extends Fragment {
     private TextView textView;
     private List<Button> mButtonsList;
     static Context context;
-    static String[] fakeButtonsText ;
+    static String[] fakeButtonsText;
+    static String ID;
 
-    public static Fragment getInstance(int position, Context context) {
+    public static Fragment getInstance(int position, Context context, String ID) {
         Bundle bundle = new Bundle();
         bundle.putInt("pos", position);
         MainMenuEmulTargetFragment targFragment = new MainMenuEmulTargetFragment();
         setContext(context);
+        setID(ID);
         targFragment.setArguments(bundle);
         return targFragment;
     }
@@ -37,6 +39,9 @@ public class MainMenuEmulTargetFragment extends Fragment {
 //        fakeButtonsText = context.getResources().getStringArray(R.array.fakeButtons);
 //    }
 
+    public static void setID(String IDGot){
+        ID = IDGot;
+    }
     public static void setContext(Context contextGot){
         context = contextGot;
         fakeButtonsText = context.getResources().getStringArray(R.array.fakeButtons);
@@ -67,6 +72,7 @@ public class MainMenuEmulTargetFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (lv.getItemAtPosition(i).toString().equals("SBER real button")) {
                     Intent DoubleChoiceActivity = new Intent(context, com.example.user.uitestsbt.DoubleChoiceActivity.class);
+                    DoubleChoiceActivity.putExtra("accID", ID);
                     startActivity(DoubleChoiceActivity);
                 }
             }

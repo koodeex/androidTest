@@ -12,7 +12,9 @@ public class PreloaderFake extends AppCompatActivity {
         setContentView(R.layout.activity_preloader_fake);
         try {
             Thread.sleep(10000);
+            Intent getID = getIntent();
             Intent subActivity = new Intent(PreloaderFake.this, MainMenuEmulActivity.class);
+            subActivity.putExtra("accId", getID.getStringExtra("accId"));
             startActivity(subActivity);
         }
         catch (Exception e)

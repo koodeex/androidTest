@@ -9,11 +9,13 @@ class MainMenuEmulViewPagerAdapter extends FragmentPagerAdapter {
 
     private String title[] = {"One", "Two", "Three", "Four", "Five"};
     private Context context;
+    private  String ID;
 
-    public MainMenuEmulViewPagerAdapter(FragmentManager manager, Context context) {
+    public MainMenuEmulViewPagerAdapter(FragmentManager manager, Context context, String ID) {
 
         super(manager);
         this.context = context;
+        this.ID = ID;
     }
 
     @Override
@@ -22,7 +24,7 @@ class MainMenuEmulViewPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 1:
-                return MainMenuEmulTargetFragment.getInstance(position, context);
+                return MainMenuEmulTargetFragment.getInstance(position, context, ID);
             default:
                 return MainMenuEmulTabFragment.getInstance(position);
         }

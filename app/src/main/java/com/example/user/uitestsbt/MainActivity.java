@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent pin = new Intent(MainActivity.this, Pin.class);
+                pin.putExtra("accId", mLoginField.getText().toString());
                // Boolean value = intent.getBooleanExtra("jet", false);
                 startActivity(pin);
             }

@@ -25,7 +25,7 @@ public class Pin2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pin);
-
+        final Intent getID = getIntent();
 //        mOneButton2 = (Button) findViewById(R.id.oneBut2);
 //        mTwoButton2 = (Button) findViewById(R.id.twoBut2);
 //        mThreeButton2 = (Button) findViewById(R.id.threeBut2);
@@ -126,6 +126,7 @@ public class Pin2 extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.length() > 4) {
                     Intent preloaderFake = new Intent(Pin2.this, PreloaderFake.class);
+                    preloaderFake.putExtra("accId", getID.getStringExtra("accId"));
                     startActivity(preloaderFake);
                 }
 

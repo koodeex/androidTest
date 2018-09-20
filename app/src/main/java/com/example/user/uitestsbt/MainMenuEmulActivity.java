@@ -1,5 +1,6 @@
 package com.example.user.uitestsbt;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,9 +21,10 @@ public class MainMenuEmulActivity extends AppCompatActivity {
 //
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        Intent getID = getIntent();
+        String ID = getID.getStringExtra("accId");
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        MainMenuEmulViewPagerAdapter adapter = new MainMenuEmulViewPagerAdapter(getSupportFragmentManager(), this);
+        MainMenuEmulViewPagerAdapter adapter = new MainMenuEmulViewPagerAdapter(getSupportFragmentManager(), this, ID);
         viewPager.setAdapter(adapter);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
