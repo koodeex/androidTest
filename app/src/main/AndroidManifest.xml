@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".EdgeActivity" />
         <activity
-            android:name=".SubActivity"
+            android:name=".MainMenuEmulActivity"
             android:theme="@style/AppCompatTheme" />
         <activity android:name=".Pin" />
         <activity android:name=".Pin2" />
@@ -26,7 +26,8 @@
         <activity android:name=".DoubleChoiceActivity" />
         <activity android:name=".ParkingDriving" />
         <activity android:name=".OneStuffActivity" />
-        <activity android:name=".ChooseYourDestiny"></activity>
+        <activity android:name=".ChooseYourDestiny" />
+        <activity android:name=".PenaltiesActivity"></activity>
     </application>
 
 </manifest>

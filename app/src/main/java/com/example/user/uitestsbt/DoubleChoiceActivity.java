@@ -2,7 +2,6 @@ package com.example.user.uitestsbt;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +24,7 @@ public class DoubleChoiceActivity extends ListActivity {
         String[] service_options = getResources().getStringArray(R.array.serviceOptionsList);
 
         // Binding resources Array to ListAdapter
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.listview_options, R.id.label, service_options));
+        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.main_menu_emul_listview_options, R.id.label, service_options));
 
         ListView lv = getListView();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

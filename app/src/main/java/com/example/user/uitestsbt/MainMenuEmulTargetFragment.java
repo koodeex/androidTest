@@ -16,25 +16,29 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class TargetFragment extends Fragment {
+public class MainMenuEmulTargetFragment extends Fragment {
 
     int position;
     private TextView textView;
     private List<Button> mButtonsList;
-    Context context;
-    String[] fakeButtonsText ;
+    static Context context;
+    static String[] fakeButtonsText ;
 
     public static Fragment getInstance(int position, Context context) {
         Bundle bundle = new Bundle();
         bundle.putInt("pos", position);
-
-        TargetFragment targFragment = new TargetFragment(context);
-
+        MainMenuEmulTargetFragment targFragment = new MainMenuEmulTargetFragment();
+        setContext(context);
         targFragment.setArguments(bundle);
         return targFragment;
     }
-    public TargetFragment(Context context) {
-        this.context = context;
+//    public MainMenuEmulTargetFragment(Context context) {
+//        this.context = context;
+//        fakeButtonsText = context.getResources().getStringArray(R.array.fakeButtons);
+//    }
+
+    public static void setContext(Context contextGot){
+        context = contextGot;
         fakeButtonsText = context.getResources().getStringArray(R.array.fakeButtons);
     }
     @Override

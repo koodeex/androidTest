@@ -5,11 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-class ViewPagerAdapter extends FragmentPagerAdapter {
+class MainMenuEmulViewPagerAdapter extends FragmentPagerAdapter {
 
     private String title[] = {"One", "Two", "Three", "Four", "Five"};
     private Context context;
-    public ViewPagerAdapter(FragmentManager manager, Context context) {
+
+    public MainMenuEmulViewPagerAdapter(FragmentManager manager, Context context) {
 
         super(manager);
         this.context = context;
@@ -21,11 +22,10 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 1:
-                return TargetFragment.getInstance(position, context);
+                return MainMenuEmulTargetFragment.getInstance(position, context);
             default:
-                return TabFragment.getInstance(position);
+                return MainMenuEmulTabFragment.getInstance(position);
         }
-
 
 
     }
