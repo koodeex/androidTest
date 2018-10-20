@@ -27,7 +27,8 @@
         <activity android:name=".ParkingDriving" />
         <activity android:name=".OneStuffActivity" />
         <activity android:name=".ChooseYourDestiny" />
-        <activity android:name=".PenaltiesActivity"></activity>
+        <activity android:name=".PenaltiesActivity"
+            android:noHistory="true"></activity>
     </application>
 
 </manifest>

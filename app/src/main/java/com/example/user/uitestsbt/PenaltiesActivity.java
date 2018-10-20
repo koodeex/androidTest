@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,6 +22,7 @@ public class PenaltiesActivity extends AppCompatActivity {
     ArrayList<String[]> searchPaidResults = new ArrayList<>();
     ArrayList<String[]> searchUnpaidResults = new ArrayList<>();
     private InputStreamReader csvfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +36,7 @@ public class PenaltiesActivity extends AppCompatActivity {
         AssetManager csvfileString = getAssets();
         try {
             csvfile = new InputStreamReader(csvfileString.open("penalties.csv"));
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.err.println("No PenaltiesActivity file");
         }
@@ -51,7 +52,7 @@ public class PenaltiesActivity extends AppCompatActivity {
 
         boolean bothNotEmpty = wuNotEmpty && stsNotEmpty;
         ArrayList<String[]> tmp = penaltyParser.getParseResults();
-        for (String[] penalty: tmp) {
+        for (String[] penalty : tmp) {
             boolean csvWU = false;
             boolean csvSTS = false;
             if (penalty[0] != null)
@@ -59,19 +60,17 @@ public class PenaltiesActivity extends AppCompatActivity {
             if (penalty[1] != null)
                 csvSTS = !penalty[1].isEmpty();
             boolean csvBoth = csvWU && csvSTS;
-            if (bothNotEmpty && csvBoth && penalty[0].equals(wu) && penalty[1].equals(sts)){
+            if (bothNotEmpty && csvBoth && penalty[0].equals(wu) && penalty[1].equals(sts)) {
                 if (Boolean.parseBoolean(penalty[3]))
                     searchPaidResults.add(penalty);
                 else
                     searchUnpaidResults.add(penalty);
-            }
-            else if ( csvWU && wuNotEmpty && penalty[0].equals(wu)) {
+            } else if (csvWU && wuNotEmpty && penalty[0].equals(wu)) {
                 if (Boolean.parseBoolean(penalty[3]))
                     searchPaidResults.add(penalty);
                 else
                     searchUnpaidResults.add(penalty);
-            }
-            else if (csvSTS && stsNotEmpty && penalty[1].equals(sts)) {
+            } else if (csvSTS && stsNotEmpty && penalty[1].equals(sts)) {
                 if (Boolean.parseBoolean(penalty[3]))
                     searchPaidResults.add(penalty);
                 else
@@ -91,5 +90,18 @@ public class PenaltiesActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs_penalties);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        android.os.Process.killProcess(android.os.Process.myPid());
+        this.finish();
     }
 }

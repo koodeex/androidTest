@@ -32,7 +32,9 @@ public class ParkingDriving extends AppCompatActivity {
     private EditText mSTSTextBox;
     private EditText mWUTextBox;
     private Boolean alreadyCreated = false;
+
     private final Context context = this;
+    private String path;
     Intent getID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class ParkingDriving extends AppCompatActivity {
         mCardPlaceholder = (TextView) findViewById(R.id.cardTempPH);
         mSTSTextBox = (EditText) findViewById(R.id.stsEditText);
         mWUTextBox = (EditText) findViewById(R.id.wuEditText);
+
         getID = getIntent();
         final Intent search = new Intent(ParkingDriving.this, PenaltiesActivity.class);
         uploadSaved();
@@ -87,6 +90,7 @@ public class ParkingDriving extends AppCompatActivity {
                         bw.write(content);
                         bw.close();
 
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -109,21 +113,31 @@ public class ParkingDriving extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        uploadSaved();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         uploadSaved();
+    }
 
-
+    @Override
+    protected void onPause(){
+        super.onPause();
+        deleteCustomViews();
     }
     private void uploadSaved() {
         File savedSettings = new File(context.getFilesDir() +"savedSettings.csv");
-        if (savedSettings.exists() && alreadyCreated == false) {
+        if (savedSettings.exists() && !alreadyCreated) {
             try {
 
                 CSVParse savedSettingsParser = new CSVParse(this, new FileReader(savedSettings));
                 ArrayList<String[]> tmp = savedSettingsParser.getParseResults();
                 for(String[] searchParams: tmp){
-                    if(searchParams[0] == getID.getStringExtra("accId")) {
+                    if(searchParams[0].equals(getID.getStringExtra("accId"))) {
                         addTextView(searchParams);
                     }
                 }
@@ -133,17 +147,26 @@ public class ParkingDriving extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        else {
+            System.err.println("File not exists");
+        }
     }
     private void addTextView(String[] param) {
         LinearLayout main = (LinearLayout) findViewById(R.id.subLayout);
         TextView valueTV = new TextView(ParkingDriving.this);
+        valueTV.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT));
         //valueTV.setWidth();
         String tmp = "";
         for (int i = 1; i < param.length; i++)
-            tmp += param[i];
+            tmp += param[i] + " ";
         valueTV.setText(tmp);
 
         main.addView(valueTV);
+        main.invalidate();
+
+
      //   textViewAdded = true;
     }
 
@@ -151,5 +174,10 @@ public class ParkingDriving extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup parent = (ViewGroup)findViewById(R.id.subLayout);
         inflater.inflate(R.layout.saved_settings_layout, parent);
+    }
+
+    private void deleteCustomViews() {
+        LinearLayout main = (LinearLayout) findViewById(R.id.subLayout);
+        main.removeAllViewsInLayout();
     }
 }

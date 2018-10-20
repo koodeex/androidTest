@@ -7,7 +7,7 @@
         android:id="@+id/textHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="repeat Pin"/>
+        android:text="Enter Pin"/>
     <TextView
         android:id="@+id/pinText"
         android:layout_width="wrap_content"
